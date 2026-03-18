@@ -1,7 +1,6 @@
 databases:
   - name: quant-trading-db
     databaseName: quant_trading
-    user: postgres
     plan: free
     region: singapore
 
