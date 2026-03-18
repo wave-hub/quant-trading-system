@@ -8,7 +8,9 @@ pydantic[email]
 # Database
 sqlalchemy==2.0.23
 psycopg2-binary==2.9.9
+asyncpg==0.31.0
 alembic==1.13.0
+aiofiles==23.2.1
 
 # Cache & Queue
 redis==5.0.1

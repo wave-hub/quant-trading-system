@@ -1,0 +1,30 @@
+databases:
+  - name: quant-trading-db
+    databaseName: quant_trading
+    user: postgres
+    plan: free
+    region: singapore
+
+services:
+  - type: web
+    name: quant-trading-system
+    runtime: python
+    region: singapore
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "uvicorn backend.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: quant-trading-db
+          property: connectionString
+      - key: PYTHON_VERSION
+        value: "3.11.11"
+      - key: NODE_VERSION
+        value: "20.11.0"
+      - key: DEBUG
+        value: "False"
+      - key: LOG_LEVEL
+        value: "INFO"
+      - key: SECRET_KEY
+        generateValue: true
